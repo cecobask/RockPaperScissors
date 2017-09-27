@@ -1,0 +1,71 @@
+$(document).ready(function() {
+var playMove;
+var compMove;
+$(".selection img").on("click", function(){
+	$("img").css("border-color", "#F8F8F8");
+	$(this).css("border-color", "#FF5400");
+	playMove=$(this).attr("id");
+	$("#PMove").text(playMove);
+	$("#CMove").text(computerMove());
+	$('#Msg').text(gameResult());
+	});
+
+function computerMove()
+{
+	var randomNum=Math.floor(Math.random()* 3 + 1);
+	
+	switch(randomNum){
+	case 1:
+		compMove="Rock";
+	break;
+	case 2:
+		compMove="Paper";
+	break;
+	case 3:
+		compMove="Scissors";
+	break;
+	}
+	return compMove;
+}
+
+function gameResult() 
+{
+	if(compMove==playMove)
+	{
+		return "It's a tie!";
+	}
+    else if(playMove=="Rock")
+	{
+		if(compMove=="Scissors")
+		{			
+			return "You win!";
+		}
+		else
+		{
+			return "You lost the game!";
+		}
+	}
+	else if(playMove=="Paper")
+	{
+		if(compMove=="Rock")
+		{
+			return "You win!";
+		}
+		else
+		{
+			return "You lost the game!";
+		}
+	}
+	else if(playMove=="Scissors")
+	{
+		if(compMove=="Paper")
+		{
+			return "You win!";
+		}
+		else
+		{
+			return "You lost the game!";
+		}
+	}
+}
+});
